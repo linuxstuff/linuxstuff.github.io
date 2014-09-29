@@ -1,4 +1,6 @@
-<h2>Chef facts</h2>
+<h2># Chef facts</h2>
+
+<h2>ignore_failure during converge phase</h2>
 
 <blockquote>
   <p>gem<em>package "syntax" do 
@@ -6,3 +8,13 @@
  ignore</em>failure true 
 end </p>
 </blockquote>
+
+<h2>Guards example</h2>
+
+<p>template "/tmp/somefile" do
+  mode '0644'
+  source "somefile.erb"
+  not_if do
+    File.exists?("/etc/passwd")
+  end
+end</p>
