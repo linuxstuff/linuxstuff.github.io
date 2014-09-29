@@ -20,7 +20,8 @@
  ***
 
  **Steps in chef-cliet run**
- * **http://docs.getchef.com/essentials_nodes_chef_run.html** 
+
+ * http://docs.getchef.com/essentials_nodes_chef_run.html 
  * **Get configuration data**:  local client.rb file + ohai 
  * **Authenticate to the Chef Server**: RSA priv key + node name against chef API
  * **Get, rebuild the node object**: node object is rebuild 
