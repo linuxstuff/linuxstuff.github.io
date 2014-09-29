@@ -20,5 +20,5 @@
  ***
 
  **Steps in chef-cliet run**
- + Get configuration data -- local client.rb file + ohai 
- + Authenticate to the Chef Server -- 
+ * Get configuration data -- local client.rb file + ohai 
+ * Authenticate to the Chef Server -- 
