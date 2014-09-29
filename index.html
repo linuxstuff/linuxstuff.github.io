@@ -15,11 +15,12 @@ end
 <p>**Guards example</p>
 
 <blockquote>
-  <p>template "/tmp/somefile" do
-  mode '0644'
-  source "somefile.erb"
-  not_if do
-    File.exists?("/etc/passwd")
-  end
- end</p>
+<pre><code>template "/tmp/somefile" do
+mode '0644'
+source "somefile.erb"
+not_if do
+ File.exists?("/etc/passwd")
+end
+end
+</code></pre>
 </blockquote>
