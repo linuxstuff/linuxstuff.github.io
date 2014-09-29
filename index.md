@@ -21,7 +21,8 @@
 
  **Steps in chef-cliet run**
  
- * Get configuration data  local client.rb file + ohai 
- * Authenticate to the Chef Server RSA priv key + node name against chef API
- * Get, rebuild the node object node object is rebuild 
- * Expand the run-list stuff 
+ * Get configuration data:  local client.rb file + ohai 
+ * Authenticate to the Chef Server: RSA priv key + node name against chef API
+ * Get, rebuild the node object: node object is rebuild 
+ * Expand the run-list: ..
+ * Synchronize cookbooks: gets the list of cookbooks, compare with existing files in cache. Chef client is able to request the cookbooks at the beginning 
