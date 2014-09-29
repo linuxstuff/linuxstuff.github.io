@@ -20,7 +20,7 @@
  ***
 
  **Steps in chef-cliet run** 
- * Get configuration data -> local client.rb file + ohai 
- * Authenticate to the Chef Server -> RSA priv key + node name against chef API
- * Get, rebuild the node object -> node object is rebuild 
- * Expand the run-list ->  
+ * Get configuration data : local client.rb file + ohai 
+ * Authenticate to the Chef Server : RSA priv key + node name against chef API
+ * Get, rebuild the node object : node object is rebuild 
+ * Expand the run-list :  
