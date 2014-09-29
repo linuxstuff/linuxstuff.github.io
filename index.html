@@ -1,23 +1,25 @@
-<h2># Chef facts</h2>
+<h1>This page contains small chef defitions or code...</h1>
 
-<h2>ignore_failure during converge phase</h2>
+<p><strong>ignore_failure during converge phase</strong></p>
 
 <blockquote>
-  <p>gem_package "syntax" do </p>
-
-<p>action :install </p>
-
-<p>ignore_failure true </p>
-
-<p>end </p>
+<pre><code>gem_package "syntax" do
+action :install
+ignore_failure true
+end
+</code></pre>
 </blockquote>
 
-<h2>Guards example</h2>
+<hr />
 
-<p>template "/tmp/somefile" do
+<p>**Guards example</p>
+
+<blockquote>
+  <p>template "/tmp/somefile" do
   mode '0644'
   source "somefile.erb"
   not_if do
     File.exists?("/etc/passwd")
   end
-end</p>
+ end</p>
+</blockquote>
