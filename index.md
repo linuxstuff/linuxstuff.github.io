@@ -17,4 +17,8 @@
  >       end
  >     end
 
- **Test1**
+ ***
+
+ **Steps in chef-cliet run**
+ + Get configuration data -- local client.rb file + ohai 
+ + Authenticate to the Chef Server -- 
