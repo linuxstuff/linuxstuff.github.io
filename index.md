@@ -8,7 +8,7 @@
 
  ***
 
- **Guards example**
+ **Guards example** 
  >     template "/tmp/somefile" do
  >       mode '0644'
  >       source "somefile.erb"
@@ -19,6 +19,6 @@
 
  ***
 
- **Steps in chef-cliet run**
-* Get configuration data -- local client.rb file + ohai 
-* Authenticate to the Chef Server -- 
+ **Steps in chef-cliet run** 
+ * Get configuration data -- local client.rb file + ohai 
+ * Authenticate to the Chef Server -- 
