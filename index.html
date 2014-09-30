@@ -1,4 +1,4 @@
-<h1>This page contains small chef defitions or code...</h1>
+<h1>Chef ...</h1>
 
 <p><strong>ignore_failure during converge phase</strong></p>
 
@@ -26,6 +26,15 @@ end
 </blockquote>
 
 <hr />
+
+<p><strong>Lazy Attribute Evaluation</strong></p>
+
+<blockquote>
+  <p>template "template_name" do
+ path lazy { " some Ruby code " }
+end
+ * the Ruby code will be evaluated in the execution phase</p>
+</blockquote>
 
 <p><strong>Steps in chef-cliet run</strong></p>
 

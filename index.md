@@ -1,4 +1,4 @@
-# This page contains small chef defitions or code...  
+# Chef ...
 
  **ignore_failure during converge phase**
  >     gem_package "syntax" do
@@ -18,6 +18,13 @@
  >     end
 
  ***
+
+ **Lazy Attribute Evaluation**
+ > template "template_name" do
+ >  path lazy { " some Ruby code " }
+ > end
+ * the Ruby code will be evaluated in the execution phase
+ 
 
  **Steps in chef-cliet run**
 
