@@ -30,10 +30,12 @@ end
 <p><strong>Lazy Attribute Evaluation</strong></p>
 
 <blockquote>
-  <p>template "template_name" do
+<pre><code>template "template_name" do
  path lazy { " some Ruby code " }
 end
- * the Ruby code will be evaluated in the execution phase</p>
+</code></pre>
+
+<p>* the Ruby code will be evaluated in the execution phase</p>
 </blockquote>
 
 <p><strong>Steps in chef-cliet run</strong></p>

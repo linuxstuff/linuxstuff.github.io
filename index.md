@@ -20,9 +20,9 @@
  ***
 
  **Lazy Attribute Evaluation**
- > template "template_name" do
- >  path lazy { " some Ruby code " }
- > end
+ >     template "template_name" do
+ >      path lazy { " some Ruby code " }
+ >     end
  * the Ruby code will be evaluated in the execution phase
  
 
