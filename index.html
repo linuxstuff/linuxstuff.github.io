@@ -38,6 +38,24 @@ end
 <p>* the Ruby code will be evaluated in the execution phase</p>
 </blockquote>
 
+<hr />
+
+<p>**Notifies</p>
+
+<blockquote>
+<pre><code>template "/etc/nagios3/configures-nagios.conf" do
+ # other parameters
+ notifies :run, "execute[test-nagios-config]", :immediately
+end
+</code></pre>
+
+<p>* the execute resource will be triggered after the template resource is executed. 
+    execute "test-nagios-config" do
+     command "nagios3 --verify-config"
+     action :nothing
+    end</p>
+</blockquote>
+
 <p><strong>Steps in chef-cliet run</strong></p>
 
 <ul>
