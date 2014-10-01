@@ -21,7 +21,11 @@ end
  action [ :enable, :start ]
 end
 </code></pre>
+
+<p>* specify a given provider for service using short or long name approach </p>
 </blockquote>
+
+<hr />
 
 <p><strong>Guards example</strong> </p>
 
@@ -71,6 +75,24 @@ end
 <hr />
 
 <p><strong>Subscribe</strong></p>
+
+<blockquote>
+<pre><code>template "/tmp/somefile" do
+ mode '0644'
+ source "somefile.erb"
+end
+
+service "apache" do
+ supports :restart =&gt; true, :reload =&gt; true
+ action :enable
+ subscribes :reload, "template[/tmp/somefile]", :immediately
+end
+</code></pre>
+
+<p>* service apache resource will be triggered each time when template "/tmp/somefile" is executed</p>
+</blockquote>
+
+<hr />
 
 <p><strong>Steps in chef-cliet run</strong></p>
 
