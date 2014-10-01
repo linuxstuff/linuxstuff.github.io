@@ -27,17 +27,17 @@
 
  *** 
  
- **Notifies
+ **Notifies**
  >     template "/etc/nagios3/configures-nagios.conf" do
  >     	# other parameters
  >     	notifies :run, "execute[test-nagios-config]", :immediately
  >     end 
- * the execute resource will be triggered after the template resource is executed. 
+ >
  >     execute "test-nagios-config" do
  >      command "nagios3 --verify-config"
  >      action :nothing
  >     end
-
+ > * the execute resource will be triggered after the template resource is executed.
 
  **Steps in chef-cliet run**
 
