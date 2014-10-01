@@ -15,11 +15,12 @@ end
 <p><strong>Use the supports and providers common attributes</strong></p>
 
 <blockquote>
-  <p>service "some_service" do
-  provider Chef::Provider::Service::Upstart
-  supports :status => true, :restart => true, :reload => true
-  action [ :enable, :start ]
- end</p>
+<pre><code>service "some_service" do
+ provider Chef::Provider::Service::Upstart
+ supports :status =&gt; true, :restart =&gt; true, :reload =&gt; true
+ action [ :enable, :start ]
+end
+</code></pre>
 </blockquote>
 
 <p><strong>Guards example</strong> </p>
