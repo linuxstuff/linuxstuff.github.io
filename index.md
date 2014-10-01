@@ -8,6 +8,13 @@
 
  ***
 
+ **Use the supports and providers common attributes**
+ > service "some_service" do
+ >  provider Chef::Provider::Service::Upstart
+ >  supports :status => true, :restart => true, :reload => true
+ >  action [ :enable, :start ]
+ > end
+
  **Guards example** 
  >     template "/tmp/somefile" do
  >       mode '0644'
@@ -38,6 +45,11 @@
  >      action :nothing
  >     end
  > * the execute resource will be triggered after the template resource is executed.
+
+ ***
+
+ **Subscribe**
+ 
 
  **Steps in chef-cliet run**
 

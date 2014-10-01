@@ -12,6 +12,16 @@ end
 
 <hr />
 
+<p><strong>Use the supports and providers common attributes</strong></p>
+
+<blockquote>
+  <p>service "some_service" do
+ provider Chef::Provider::Service::Upstart
+ supports :status => true, :restart => true, :reload => true
+ action [ :enable, :start ]
+end</p>
+</blockquote>
+
 <p><strong>Guards example</strong> </p>
 
 <blockquote>
@@ -56,6 +66,10 @@ end
 
 <p>* the execute resource will be triggered after the template resource is executed.</p>
 </blockquote>
+
+<hr />
+
+<p><strong>Subscribe</strong></p>
 
 <p><strong>Steps in chef-cliet run</strong></p>
 
