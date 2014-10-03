@@ -70,10 +70,13 @@
  
  * Run a resource before all other resources are added to the resource collection and/or after all resources have been added, but before the chef-client configures the system.
  * Run before other resources
+ >
  >     e = execute "apt-get update" do
  >      action :nothing
  >     end
  >     e.run_action(:run)
+ >
+
  * To run a resource at the end of the resource collection phase of the chef-client run, use the :delayed timer on a notification.
 
  ***
