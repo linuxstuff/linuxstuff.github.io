@@ -67,6 +67,7 @@
  ***
  
  **Run Resources from the Resource Collection**
+ 
  * Run a resource before all other resources are added to the resource collection and/or after all resources have been added, but before the chef-client configures the system.
 
  * Run before other resources
