@@ -8,7 +8,7 @@
 
  * /etc/init.d/mysql stop
  * mysqld_safe --init-file=/home/user/mysql_recover_pass.sql &
-
+ * /etc/init.d/mysql restart
 
  ***
 
