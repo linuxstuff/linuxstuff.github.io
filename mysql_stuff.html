@@ -3,16 +3,16 @@
 <p><strong>change the mysql root password</strong></p>
 
 <ul>
-<li>create a file containing this lines:
+<li><p>create a file containing this lines:</p>
+
 <blockquote>
 <pre><code>UPDATE mysql.user SET Password=PASSWORD('yourpass') WHERE User='root';
-flush privileges;&lt;/li&gt;
+flush privileges;
 </code></pre>
-
-<p><li>/etc/init.d/mysql stop</li>
+</blockquote></li>
+<li><p>/etc/init.d/mysql stop</p></li>
 <li>mysqld<em>safe --init-file=/home/user/mysql</em>recover_pass.sql &amp;</li>
 <li>/etc/init.d/mysql restart</li>
 </ul>
 
-<p><hr /></p>
-</blockquote></p>
+<hr />
