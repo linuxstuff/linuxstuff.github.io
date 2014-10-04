@@ -102,4 +102,4 @@
  ### apt_package
  * In many cases, it is better to use the package resource instead of this one. [This is why](http://docs.getchef.com/chef/resources.html#apt-package)
 
-
+ >
