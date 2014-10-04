@@ -65,7 +65,21 @@
  * service apache resource will be triggered each time when template "/tmp/somefile" is executed
 
  ***
+ 
+ **Run Resources from the Resource Collection**
+ 
+ * Run a resource before all other resources are added to the resource collection and/or after all resources have been added, but before the chef-client configures the system.
+ * Run before other resources
+ >
+ >     e = execute "apt-get update" do
+ >      action :nothing
+ >     end
+ >     e.run_action(:run)
+ >
 
+ * To run a resource at the end of the resource collection phase of the chef-client run, use the :delayed timer on a notification.
+
+ ***
 
  **Steps in chef-cliet run**
 
