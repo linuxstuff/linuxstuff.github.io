@@ -1,4 +1,4 @@
-# Chef ...
+# Chef resources ...
 
  **ignore_failure during converge phase**
  >     gem_package "syntax" do
@@ -80,6 +80,9 @@
  * To run a resource at the end of the resource collection phase of the chef-client run, use the :delayed timer on a notification.
 
  ***
+
+ ### apt_package
+ * In many cases, it is better to use the package resource instead of this one. [This is why](http://docs.getchef.com/chef/resources.html#apt-package)
 
  **Steps in chef-cliet run**
 
