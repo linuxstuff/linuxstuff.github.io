@@ -138,4 +138,8 @@ e.run_action(:run)
 <p>### apt_package
  * In many cases, it is better to use the package resource instead of this one. <a href="http://docs.getchef.com/chef/resources.html#apt-package">This is why</a></p>
 
-<p>></p>
+<blockquote>
+<pre><code> apt_package "Install vim" do
+package_name "vim"
+</code></pre>
+</blockquote>
