@@ -4,4 +4,6 @@
 
  * go to file: /opt/chef-server/embedded/cookbooks/chef-server/attributes/default.rb
  * search for *default['chef_server']['chef-server-webui']['listen']* and change it 
- * or you use iptables to redirect traffic to port 9462
+ * or you use iptables to redirect traffic to 127.0.0.1 port 9462
+
+***
