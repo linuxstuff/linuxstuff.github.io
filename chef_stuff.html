@@ -135,14 +135,11 @@ e.run_action(:run)
 
 <h1>Resources that are build in</h1>
 
-<p><strong>apt_package</strong></p>
-
 <ul>
-<li><p>In many cases, it is better to use the package resource instead of this one. <a href="http://docs.getchef.com/chef/resources.html#apt-package">This is why</a></p>
-
-<blockquote>
-<pre><code> apt_package "Install vim" do
-package_name "vim"
-</code></pre>
-</blockquote></li>
+<li>apt_package</li>
+<li>bash</li>
+<li>batch , for windows </li>
+<li>breakpoint , add breakpoints to recipes, then run the chef-client in chef-shell mode.</li>
+<li>chef_gem, install a gem only for the instance of Ruby that is dedicated to the chef-client. It is done before convergence, allowing a gem to be used in a recipe immediately after it is installed.</li>
+<li>chef<em>handler , types: start(in config.rb), report(by chef</em>handler), error (by chef_handler or config.rb)  </li>
 </ul>
