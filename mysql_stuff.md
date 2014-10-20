@@ -31,6 +31,7 @@
  * session1: select * from test; will still show id=7... this is REPEATABLE-READ
  * session1: update test set id=10 where id=7; => Rows matched: 0  Changed: 0  Warnings: 0 ... phantom row
 
+ ***
 
  **Under READ-COMMITTED** 
 
