@@ -55,3 +55,8 @@
  * session1: update test set id=10 where id=6; => Rows matched: 0  Changed: 0  Warnings: 0 ... phantom row
 
  ***
+
+ **Get trx lock info**
+
+ * mysql -u user -ppass -e "select * from information_schema.INNODB_TRX\G" > /tmp/trx_info.txt
+ * grep "trx_rows_modified\|trx_rows_locked\|trx_lock_memory_bytes" trx_info.txt | grep -v ": 0" | sort | uniq -c

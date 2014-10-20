@@ -63,3 +63,10 @@ flush privileges;
 </ul>
 
 <hr />
+
+<p><strong>Get trx lock info</strong></p>
+
+<ul>
+<li>mysql -u user -ppass -e "select * from information<em>schema.INNODB</em>TRX\G" > /tmp/trx_info.txt</li>
+<li>grep "trx<em>rows</em>modified\|trx<em>rows</em>locked\|trx<em>lock</em>memory<em>bytes" trx</em>info.txt | grep -v ": 0" | sort | uniq -c</li>
+</ul>
