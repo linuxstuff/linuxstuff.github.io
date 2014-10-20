@@ -22,15 +22,43 @@ flush privileges;
 <ul>
 <li>session1: start transaction;</li>
 <li>session2: start transaction;</li>
-<li>---</li>
+<li>
+<ul>
 <li>session2: delete from test where id=7;</li>
+</ul></li>
 <li>session1: select * from test; => will still show id=7</li>
-<li>---</li>
+<li>
+<ul>
 <li>session1: update test set id=10 where id=7; => Lock wait timeout exceeded; try restarting transaction</li>
-<li>---</li>
+</ul></li>
+<li>
+<ul>
 <li>session2: commit;</li>
+</ul></li>
 <li>session1: select * from test; will still show id=7... this is REPEATABLE-READ</li>
 <li><p>session1: update test set id=10 where id=7; => Rows matched: 0  Changed: 0  Warnings: 0 ... phantom row</p>
 
 <p><strong>Under READ-COMMITTED</strong> </p></li>
+<li><p>session1: start transaction;</p></li>
+<li>session2: start transaction;</li>
+<li>
+<ul>
+<li>session2: delete from test where id=6;</li>
+</ul></li>
+<li>session1: select * from test; => will still show id=6</li>
+<li>
+<ul>
+<li>session1: update test set id=10 where id=7; => Lock wait timeout exceeded; try restarting transaction</li>
+</ul></li>
+<li>
+<ul>
+<li>session2: insert into test values (8);</li>
+</ul></li>
+<li>session2: insert into test values (9);</li>
+<li>session2: commit;</li>
+<li>session1: select * from test; => id 8 and 9 will be read , this is READ-COMMITTED ... phantom row</li>
+<li>
+<ul>
+<li>session1: update test set id=10 where id=6; => Rows matched: 0  Changed: 0  Warnings: 0 ... phantom row</li>
+</ul></li>
 </ul>

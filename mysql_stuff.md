@@ -17,15 +17,31 @@
 
  * session1: start transaction;
  * session2: start transaction;
- * ---
+ *    
  * session2: delete from test where id=7;
  * session1: select * from test; => will still show id=7
- * ---
+ *    
  * session1: update test set id=10 where id=7; => Lock wait timeout exceeded; try restarting transaction
- * ---
+ *    
  * session2: commit;
  * session1: select * from test; will still show id=7... this is REPEATABLE-READ
  * session1: update test set id=10 where id=7; => Rows matched: 0  Changed: 0  Warnings: 0 ... phantom row
 
 
  **Under READ-COMMITTED** 
+
+ * session1: start transaction;
+ * session2: start transaction;
+ *    
+ * session2: delete from test where id=6;
+ * session1: select * from test; => will still show id=6
+ *     
+ * session1: update test set id=10 where id=7; => Lock wait timeout exceeded; try restarting transaction
+ *       
+ * session2: insert into test values (8);
+ * session2: insert into test values (9);
+ * session2: commit;
+ * session1: select * from test; => id 8 and 9 will be read , this is READ-COMMITTED ... phantom row
+ * 
+ * session1: update test set id=10 where id=6; => Rows matched: 0  Changed: 0  Warnings: 0 ... phantom row
+
