@@ -54,3 +54,4 @@
  * session3: select * from INNODB_TRX\G -- take a look and observe
  * session1: update test set id=10 where id=6; => Rows matched: 0  Changed: 0  Warnings: 0 ... phantom row
 
+ ***
