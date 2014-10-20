@@ -22,18 +22,15 @@ flush privileges;
 <ul>
 <li>session1: start transaction;</li>
 <li>session2: start transaction;
-<blockquote>
-  <p></li>
+*</li>
 <li>session2: delete from test where id=7;</li>
 <li>session1: select * from test; => will still show id=7
-</li>
+*</li>
 <li>session1: update test set id=10 where id=7; => Lock wait timeout exceeded; try restarting transaction
-</li>
+*</li>
 <li>session2: commit;</li>
-<li>session1: select * from test; will still show id=7... this is REPEATABLE-READ
-</li>
-<li><p>session1: update test set id=10 where id=7; => Rows matched: 0  Changed: 0  Warnings: 0 ... phantom row</p></p>
-</blockquote>
+<li>session1: select * from test; will still show id=7... this is REPEATABLE-READ</li>
+<li><p>session1: update test set id=10 where id=7; => Rows matched: 0  Changed: 0  Warnings: 0 ... phantom row</p>
 
 <p><strong>Under READ-COMMITTED</strong> </p></li>
 </ul>
