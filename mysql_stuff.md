@@ -17,12 +17,12 @@
 
  * session1: start transaction;
  * session2: start transaction;
- *    
+ * *** 
  * session2: delete from test where id=7;
  * session1: select * from test; => will still show id=7
- *    
+ * ***   
  * session1: update test set id=10 where id=7; => Lock wait timeout exceeded; try restarting transaction
- *    
+ * **   
  * session2: commit;
  * session1: select * from test; will still show id=7... this is REPEATABLE-READ
  * session1: update test set id=10 where id=7; => Rows matched: 0  Changed: 0  Warnings: 0 ... phantom row
