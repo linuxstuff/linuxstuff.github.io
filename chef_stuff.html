@@ -135,12 +135,30 @@ e.run_action(:run)
 
 <h1>Resources that are build in</h1>
 
-<ul>
-<li>apt_package</li>
+<p><ul>
+<li>apt<em>package</li>
 <li>bash</li>
 <li>batch , for windows </li>
 <li>breakpoint , add breakpoints to recipes, then run the chef-client in chef-shell mode.</li>
-<li>chef_gem, install a gem only for the instance of Ruby that is dedicated to the chef-client. It is done before convergence, allowing a gem to be used in a recipe immediately after it is installed.</li>
+<li>chef</em>gem, install a gem only for the instance of Ruby that is dedicated to the chef-client. It is done before convergence, allowing a gem to be used in a recipe immediately after it is installed.</li>
 <li>chef<em>handler , types: start(in config.rb), report(by chef</em>handler), error (by chef_handler or config.rb) </li>
-<li>cookbook<em>file ,  transfer files from a sub-directory of COOKBOOK</em>NAME/files/  </li>
-</ul>
+<li>cookbook<em>file ,  transfer files from a sub-directory of COOKBOOK</em>NAME/files/ </p>
+
+<blockquote>
+<pre><code> cookbook_file "application.pm" do 
+ path case node['platform']
+   when "centos","redhat"
+    "/usr/lib/version/1.2.3/dir/application.pm"
+   when "arch"
+    "other file"
+   else
+    "other file"
+   end
+ source "application-#{node['languages']['perl']['version']}.pm"
+ owner 'root'
+ ...
+ end &lt;/li&gt;
+</code></pre>
+
+<p></ul></p>
+</blockquote>

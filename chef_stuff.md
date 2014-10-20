@@ -105,4 +105,17 @@
  * breakpoint , add breakpoints to recipes, then run the chef-client in chef-shell mode.
  * chef_gem, install a gem only for the instance of Ruby that is dedicated to the chef-client. It is done before convergence, allowing a gem to be used in a recipe immediately after it is installed.
  * chef_handler , types: start(in config.rb), report(by chef_handler), error (by chef_handler or config.rb) 
- * cookbook_file ,  transfer files from a sub-directory of COOKBOOK_NAME/files/  
+ * cookbook_file ,  transfer files from a sub-directory of COOKBOOK_NAME/files/ 
+ >      cookbook_file "application.pm" do 
+ >        path case node['platform']
+ >          when "centos","redhat"
+ >           "/usr/lib/version/1.2.3/dir/application.pm"
+ >          when "arch"
+ >           "other file"
+ >          else
+ >           "other file"
+ >          end
+ >        source "application-#{node['languages']['perl']['version']}.pm"
+ >        owner 'root'
+ >        ...
+ >      end 

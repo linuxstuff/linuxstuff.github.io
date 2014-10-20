@@ -16,3 +16,16 @@ flush privileges;
 </ul>
 
 <hr />
+
+<p><em>* Under REPEATABLE-READ *</em></p>
+
+<ul>
+<li>session1: start transaction;</li>
+<li><p>session2: start transaction;</p></li>
+<li><p>session2: delete from test where id=7;</p></li>
+<li><p>session1: select * from test; => will still show id=7</p></li>
+<li><p>session1: update test set id=10 where id=7; => Lock wait timeout exceeded; try restarting transaction</p></li>
+<li><p>session2: commit;</p></li>
+<li><p>session1: select * from test; will still show id=7... this is REPEATABLE-READ</p></li>
+<li><p>session1: update test set id=10 where id=7; => Rows matched: 0  Changed: 0  Warnings: 0 ... phantom row</p></li>
+</ul>
