@@ -135,14 +135,14 @@ e.run_action(:run)
 
 <h1>Resources that are build in</h1>
 
-<p><ul>
-<li>apt<em>package</li>
-<li>bash</li>
-<li>batch , for windows </li>
-<li>breakpoint , add breakpoints to recipes, then run the chef-client in chef-shell mode.</li>
-<li>chef</em>gem, install a gem only for the instance of Ruby that is dedicated to the chef-client. It is done before convergence, allowing a gem to be used in a recipe immediately after it is installed.</li>
-<li>chef<em>handler , types: start(in config.rb), report(by chef</em>handler), error (by chef_handler or config.rb) </li>
-<li><p>cookbook<em>file ,  transfer files from a sub-directory of COOKBOOK</em>NAME/files/ </p></p>
+<ul>
+<li><strong>apt_package</strong></li>
+<li><strong>bash</strong></li>
+<li><strong>batch</strong> , for windows </li>
+<li><strong>breakpoint</strong> , add breakpoints to recipes, then run the chef-client in chef-shell mode.</li>
+<li><strong>chef_gem</strong>, install a gem only for the instance of Ruby that is dedicated to the chef-client. It is done before convergence, allowing a gem to be used in a recipe immediately after it is installed.</li>
+<li><strong>chef<em>handler</strong> , types: start(in config.rb), report(by chef</em>handler), error (by chef_handler or config.rb) </li>
+<li><p><strong>cookbook<em>file</strong> ,  transfer files from a sub-directory of COOKBOOK</em>NAME/files/ </p>
 
 <blockquote>
 <pre><code> cookbook_file "application.pm" do 
@@ -159,26 +159,45 @@ e.run_action(:run)
  end
 </code></pre>
 </blockquote></li>
-<li><p>cron, resource should only be used to modify an entry in a crontab file</p></li>
-<li>cdh, execute scripts using the csh interpreter</li>
-<li>deploy,  manage and control deployments. The deploy resource is designed to behave in a way that is similar to the deploy and deploy:migration tasks in Capistrano
+<li><p><strong>cron</strong>, resource should only be used to modify an entry in a crontab file</p></li>
+<li><strong>cdh</strong>, execute scripts using the csh interpreter</li>
+<li><p><strong>deploy</strong>,  manage and control deployments. The deploy resource is designed to behave in a way that is similar to the deploy and deploy:migration tasks in Capistrano</p>
+
 <blockquote>
 <pre><code>deploy "/my/deploy/dir" do
 repo "git@github.com/whoami/project"
-revision "abc123" # or "HEAD" or "TAG&lt;em&gt;for&lt;/em&gt;1.0" or (subversion) "1234"
-user "deploy&lt;em&gt;ninja"
-enable&lt;/em&gt;submodules true
+revision "abc123" # or "HEAD" or "TAG_for_1.0" or (subversion) "1234"
+user "deploy_ninja"
+enable_submodules true
 migrate true
-migration&lt;em&gt;command "rake db:migrate"
-environment "RAILS&lt;/em&gt;ENV" =&gt; "production", "OTHER&lt;em&gt;ENV" =&gt; "foo"
-shallow&lt;/em&gt;clone true
-keep&lt;em&gt;releases 10
+migration_command "rake db:migrate"
+environment "RAILS_ENV" =&gt; "production", "OTHER_ENV" =&gt; "foo"
+shallow_clone true
+keep_releases 10
 action :deploy # or :rollback
-restart&lt;/em&gt;command "touch tmp/restart.txt"
-git&lt;em&gt;ssh&lt;/em&gt;wrapper "wrap-ssh4git.sh"
+restart_command "touch tmp/restart.txt"
+git_ssh_wrapper "wrap-ssh4git.sh"
 scm_provider Chef::Provider::Git # is the default, for svn: Chef::Provider::Subversion
-end&lt;/li&gt;
+end
 </code></pre>
+</blockquote></li>
+<li><p><strong>directory</strong>, manage directories</p>
 
-<p></ul></p>
-</blockquote>
+<blockquote>
+<pre><code> %w{dir1 dir2 dir3}.each do |dir|
+ directory "/tmp/mydirs/#{dir}" do
+   mode '0775'
+   owner 'root'
+   group 'root'
+   action :create
+   recursive true
+ end
+ end
+</code></pre>
+</blockquote></li>
+<li><p><strong>dpkg_package</strong>, In many cases, it is better to use the package resource instead of this one. This is because when the package resource is used in a recipe, the chef-client will use details that are collected by Ohai at the start of the chef-client run to determine the correct package application</p></li>
+<li><strong>dsc<em>script</strong>, Windows PowerShell 4.0 is required for using the dsc</em>script resource with Chef.</li>
+<li><strong>easy<em>install</em>package</strong>, manage packages for the Python platform; use the package resource instead of this one</li>
+<li><strong>env</strong>, manage environment keys in Microsoft Windows. After an environment key is set, Microsoft Windows must be restarted before the environment key will be available to the Task Scheduler.</li>
+<li><strong>erl_call</strong>, connect to a node located within a distributed Erlang system</li>
+</ul>

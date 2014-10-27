@@ -99,13 +99,13 @@
 
 # Resources that are build in
 
- * apt_package
- * bash
- * batch , for windows 
- * breakpoint , add breakpoints to recipes, then run the chef-client in chef-shell mode.
- * chef_gem, install a gem only for the instance of Ruby that is dedicated to the chef-client. It is done before convergence, allowing a gem to be used in a recipe immediately after it is installed.
- * chef_handler , types: start(in config.rb), report(by chef_handler), error (by chef_handler or config.rb) 
- * cookbook_file ,  transfer files from a sub-directory of COOKBOOK_NAME/files/ 
+ * **apt_package**
+ * **bash**
+ * **batch** , for windows 
+ * **breakpoint** , add breakpoints to recipes, then run the chef-client in chef-shell mode.
+ * **chef_gem**, install a gem only for the instance of Ruby that is dedicated to the chef-client. It is done before convergence, allowing a gem to be used in a recipe immediately after it is installed.
+ * **chef_handler** , types: start(in config.rb), report(by chef_handler), error (by chef_handler or config.rb) 
+ * **cookbook_file** ,  transfer files from a sub-directory of COOKBOOK_NAME/files/ 
  >      cookbook_file "application.pm" do 
  >        path case node['platform']
  >          when "centos","redhat"
@@ -119,9 +119,9 @@
  >        owner 'root'
  >      end 
 
- * cron, resource should only be used to modify an entry in a crontab file
- * cdh, execute scripts using the csh interpreter
- * deploy,  manage and control deployments. The deploy resource is designed to behave in a way that is similar to the deploy and deploy:migration tasks in Capistrano
+ * **cron**, resource should only be used to modify an entry in a crontab file
+ * **cdh**, execute scripts using the csh interpreter
+ * **deploy**,  manage and control deployments. The deploy resource is designed to behave in a way that is similar to the deploy and deploy:migration tasks in Capistrano
  >     deploy "/my/deploy/dir" do
  >       repo "git@github.com/whoami/project"
  >       revision "abc123" # or "HEAD" or "TAG_for_1.0" or (subversion) "1234"
@@ -137,4 +137,21 @@
  >       git_ssh_wrapper "wrap-ssh4git.sh"
  >       scm_provider Chef::Provider::Git # is the default, for svn: Chef::Provider::Subversion
  >     end
+
+ * **directory**, manage directories
+ >      %w{dir1 dir2 dir3}.each do |dir|
+ >        directory "/tmp/mydirs/#{dir}" do
+ >          mode '0775'
+ >          owner 'root'
+ >          group 'root'
+ >          action :create
+ >          recursive true
+ >        end
+ >      end
+
+ * **dpkg_package**, In many cases, it is better to use the package resource instead of this one. This is because when the package resource is used in a recipe, the chef-client will use details that are collected by Ohai at the start of the chef-client run to determine the correct package application
+ * **dsc_script**, Windows PowerShell 4.0 is required for using the dsc_script resource with Chef.
+ * **easy_install_package**, manage packages for the Python platform; use the package resource instead of this one
+ * **env**, manage environment keys in Microsoft Windows. After an environment key is set, Microsoft Windows must be restarted before the environment key will be available to the Task Scheduler.
+ * **erl_call**, connect to a node located within a distributed Erlang system
 
