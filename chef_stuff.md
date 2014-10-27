@@ -119,9 +119,9 @@
  >        owner 'root'
  >      end 
 
- * cron, resource should only be used to modify an entry in a crontab file.
+ * cron, resource should only be used to modify an entry in a crontab file
  * cdh, execute scripts using the csh interpreter
- * deploy,  manage and control deployments. The deploy resource is designed to behave in a way that is similar to the deploy and deploy:migration tasks in Capistrano.
+ * deploy,  manage and control deployments. The deploy resource is designed to behave in a way that is similar to the deploy and deploy:migration tasks in Capistrano
  >     deploy "/my/deploy/dir" do
  >       repo "git@github.com/whoami/project"
  >       revision "abc123" # or "HEAD" or "TAG_for_1.0" or (subversion) "1234"
