@@ -163,6 +163,7 @@
  >        content content_string
  >        action :create
  >      end 
+ 
  * **freebsd_package**, manage packages for the FreeBSD platform. In many cases, it is better to use the package resource instead of this one. This is because when the package resource is used in a recipe, the chef-client will use details that are collected by Ohai at the start of the chef-client run to determine the correct package application
  * **gem_package**, manage gem packages that are only included in recipes. install gems on the system wide. In many cases, it is better to use the package resource instead of this one
  * **git**, manage source control resources that exist in a git repository. 
