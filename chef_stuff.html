@@ -135,14 +135,14 @@ e.run_action(:run)
 
 <h1>Resources that are build in</h1>
 
-<ul>
-<li><strong>apt_package</strong></li>
+<p><ul>
+<li><strong>apt<em>package</strong></li>
 <li><strong>bash</strong></li>
 <li><strong>batch</strong> , for windows </li>
 <li><strong>breakpoint</strong> , add breakpoints to recipes, then run the chef-client in chef-shell mode.</li>
-<li><strong>chef_gem</strong>, install a gem only for the instance of Ruby that is dedicated to the chef-client. It is done before convergence, allowing a gem to be used in a recipe immediately after it is installed.</li>
+<li><strong>chef</em>gem</strong>, install a gem only for the instance of Ruby that is dedicated to the chef-client. It is done before convergence, allowing a gem to be used in a recipe immediately after it is installed.</li>
 <li><strong>chef<em>handler</strong> , types: start(in config.rb), report(by chef</em>handler), error (by chef_handler or config.rb) </li>
-<li><p><strong>cookbook<em>file</strong> ,  transfer files from a sub-directory of COOKBOOK</em>NAME/files/ </p>
+<li><p><strong>cookbook<em>file</strong> ,  transfer files from a sub-directory of COOKBOOK</em>NAME/files/ </p></p>
 
 <blockquote>
 <pre><code> cookbook_file "application.pm" do 
@@ -200,4 +200,41 @@ end
 <li><strong>easy<em>install</em>package</strong>, manage packages for the Python platform; use the package resource instead of this one</li>
 <li><strong>env</strong>, manage environment keys in Microsoft Windows. After an environment key is set, Microsoft Windows must be restarted before the environment key will be available to the Task Scheduler.</li>
 <li><strong>erl_call</strong>, connect to a node located within a distributed Erlang system</li>
-</ul>
+<li><strong>execute</strong>, Commands that are executed with this resource are (by their nature) not idempotent, as they are typically unique to the environment in which they are run. Use not<em>if and only</em>if to guard this resource for idempotence.</li>
+<li><strong>file</strong>, manage files directly on a node.
+<blockquote>
+<pre><code> file "/tmp/something" do
+ owner 'root'
+ group 'root'
+ mode '0755'
+ content content_string
+ action :create
+ end&lt;/li&gt;
+</code></pre>
+
+<p><li><strong>freebsd<em>package</strong>, manage packages for the FreeBSD platform. In many cases, it is better to use the package resource instead of this one. This is because when the package resource is used in a recipe, the chef-client will use details that are collected by Ohai at the start of the chef-client run to determine the correct package application.</li>
+<li><strong>gem</em>package</strong>, manage gem packages that are only included in recipes. install gems on the system wide. In many cases, it is better to use the package resource instead of this one.</li>
+<li><strong>git</strong>, manage source control resources that exist in a git repository. 
+     git "/home/user/deployment" do
+        repository "git@github.com:gitsite/deployment.git"
+        revision branch_name
+        action :sync
+        user "user"
+        group "test"
+     end</li>
+<li><strong>group</strong>, manage a local group. 
+     group "www-data" do
+       action :modify
+       members "maintenance"
+       append true
+     end</li>
+<li><strong>http<em>request</strong>, send an HTTP request (GET, PUT, POST, DELETE, HEAD, or OPTIONS) with an arbitrary message. This resource is often useful when custom callbacks are necessary.
+     http</em>request "posting data" do
+       action :post
+       url "http://example.com/check<em>in"
+       message ({:some => "data"}.to</em>json)
+       headers({"AUTHORIZATION" => "Basic #{Base64.encode64("username:password")}","Content-Type" => "application/data"})
+     end</li>
+ * 
+</ul></p>
+</blockquote>

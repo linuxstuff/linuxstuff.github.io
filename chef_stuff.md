@@ -154,4 +154,36 @@
  * **easy_install_package**, manage packages for the Python platform; use the package resource instead of this one
  * **env**, manage environment keys in Microsoft Windows. After an environment key is set, Microsoft Windows must be restarted before the environment key will be available to the Task Scheduler.
  * **erl_call**, connect to a node located within a distributed Erlang system
-
+ * **execute**, Commands that are executed with this resource are (by their nature) not idempotent, as they are typically unique to the environment in which they are run. Use not_if and only_if to guard this resource for idempotence.
+ * **file**, manage files directly on a node.
+ >      file "/tmp/something" do
+ >        owner 'root'
+ >        group 'root'
+ >        mode '0755'
+ >        content content_string
+ >        action :create
+ >      end
+ * **freebsd_package**, manage packages for the FreeBSD platform. In many cases, it is better to use the package resource instead of this one. This is because when the package resource is used in a recipe, the chef-client will use details that are collected by Ohai at the start of the chef-client run to determine the correct package application.
+ * **gem_package**, manage gem packages that are only included in recipes. install gems on the system wide. In many cases, it is better to use the package resource instead of this one.
+ * **git**, manage source control resources that exist in a git repository. 
+ >      git "/home/user/deployment" do
+ >         repository "git@github.com:gitsite/deployment.git"
+ >         revision branch_name
+ >         action :sync
+ >         user "user"
+ >         group "test"
+ >      end
+ * **group**, manage a local group. 
+ >      group "www-data" do
+ >        action :modify
+ >        members "maintenance"
+ >        append true
+ >      end
+ * **http_request**, send an HTTP request (GET, PUT, POST, DELETE, HEAD, or OPTIONS) with an arbitrary message. This resource is often useful when custom callbacks are necessary.
+ >      http_request "posting data" do
+ >        action :post
+ >        url "http://example.com/check_in"
+ >        message ({:some => "data"}.to_json)
+ >        headers({"AUTHORIZATION" => "Basic #{Base64.encode64("username:password")}","Content-Type" => "application/data"})
+ >      end
+ * 
