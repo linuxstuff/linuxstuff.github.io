@@ -188,7 +188,7 @@
  >        action :post
  >        url "http://example.com/check_in"
  >        message ({:some => "data"}.to_json)
- >        headers({"AUTHORIZATION" => "Basic #{Base64.encode64("username:password")}","Content-Type" => "application/data"})
+ >        headers({AUTHORIZATION => Basic Base64.encode64(username:password)},Content-Type => application/data})
  >      end
 
  * **ifconfig**, manage interfaces

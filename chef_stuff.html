@@ -244,7 +244,7 @@ end
  action :post
  url "http://example.com/check_in"
  message ({:some =&gt; "data"}.to_json)
- headers({"AUTHORIZATION" =&gt; "Basic #{Base64.encode64("username:password")}","Content-Type" =&gt; "application/data"})
+ headers({AUTHORIZATION =&gt; Basic Base64.encode64(username:password)},Content-Type =&gt; application/data})
  end
 </code></pre>
 </blockquote></li>
