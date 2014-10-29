@@ -135,14 +135,14 @@ e.run_action(:run)
 
 <h1>Resources that are build in</h1>
 
-<p><ul>
-<li><strong>apt<em>package</strong></li>
+<ul>
+<li><strong>apt_package</strong></li>
 <li><strong>bash</strong></li>
 <li><strong>batch</strong> , for windows </li>
 <li><strong>breakpoint</strong> , add breakpoints to recipes, then run the chef-client in chef-shell mode.</li>
-<li><strong>chef</em>gem</strong>, install a gem only for the instance of Ruby that is dedicated to the chef-client. It is done before convergence, allowing a gem to be used in a recipe immediately after it is installed.</li>
+<li><strong>chef_gem</strong>, install a gem only for the instance of Ruby that is dedicated to the chef-client. It is done before convergence, allowing a gem to be used in a recipe immediately after it is installed.</li>
 <li><strong>chef<em>handler</strong> , types: start(in config.rb), report(by chef</em>handler), error (by chef_handler or config.rb) </li>
-<li><p><strong>cookbook<em>file</strong> ,  transfer files from a sub-directory of COOKBOOK</em>NAME/files/ </p></p>
+<li><p><strong>cookbook<em>file</strong> ,  transfer files from a sub-directory of COOKBOOK</em>NAME/files/ </p>
 
 <blockquote>
 <pre><code> cookbook_file "application.pm" do 
@@ -215,7 +215,8 @@ end
 </blockquote></li>
 <li><p><strong>freebsd_package</strong>, manage packages for the FreeBSD platform. In many cases, it is better to use the package resource instead of this one. This is because when the package resource is used in a recipe, the chef-client will use details that are collected by Ohai at the start of the chef-client run to determine the correct package application</p></li>
 <li><strong>gem_package</strong>, manage gem packages that are only included in recipes. install gems on the system wide. In many cases, it is better to use the package resource instead of this one</li>
-<li><strong>git</strong>, manage source control resources that exist in a git repository. 
+<li><p><strong>git</strong>, manage source control resources that exist in a git repository. </p>
+
 <blockquote>
 <pre><code> git "/home/user/deployment" do
   repository "git@github.com:gitsite/deployment.git"
@@ -223,22 +224,36 @@ end
   action :sync
   user "user"
   group "test"
- end&lt;/li&gt;
+ end
 </code></pre>
+</blockquote></li>
+<li><p><strong>group</strong>, manage a local group. </p>
 
-<p><li><strong>group</strong>, manage a local group. 
-     group "www-data" do
-       action :modify
-       members "maintenance"
-       append true
-     end</li>
-<li><strong>http<em>request</strong>, send an HTTP request (GET, PUT, POST, DELETE, HEAD, or OPTIONS) with an arbitrary message. This resource is often useful when custom callbacks are necessary.
-     http</em>request "posting data" do
-       action :post
-       url "http://example.com/check<em>in"
-       message ({:some => "data"}.to</em>json)
-       headers({"AUTHORIZATION" => "Basic #{Base64.encode64("username:password")}","Content-Type" => "application/data"})
-     end</li>
- * 
-</ul></p>
-</blockquote>
+<blockquote>
+<pre><code> group "www-data" do
+ action :modify
+ members "maintenance"
+ append true
+ end
+</code></pre>
+</blockquote></li>
+<li><p><strong>http_request</strong>, send an HTTP request (GET, PUT, POST, DELETE, HEAD, or OPTIONS) with an arbitrary message. This resource is often useful when custom callbacks are necessary.</p>
+
+<blockquote>
+<pre><code> http_request "posting data" do
+ action :post
+ url "http://example.com/check_in"
+ message ({:some =&gt; "data"}.to_json)
+ headers({"AUTHORIZATION" =&gt; "Basic #{Base64.encode64("username:password")}","Content-Type" =&gt; "application/data"})
+ end
+</code></pre>
+</blockquote></li>
+<li><p><strong>ifconfig</strong>, manage interfaces</p>
+
+<blockquote>
+<pre><code>  ifconfig "192.186.0.1" do
+ device "eth0"
+end
+</code></pre>
+</blockquote></li>
+</ul>

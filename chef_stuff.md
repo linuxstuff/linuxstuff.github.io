@@ -173,13 +173,15 @@
  >         action :sync
  >         user "user"
  >         group "test"
- >      end
+ >      end 
+
  * **group**, manage a local group. 
  >      group "www-data" do
  >        action :modify
  >        members "maintenance"
  >        append true
- >      end
+ >      end 
+
  * **http_request**, send an HTTP request (GET, PUT, POST, DELETE, HEAD, or OPTIONS) with an arbitrary message. This resource is often useful when custom callbacks are necessary.
  >      http_request "posting data" do
  >        action :post
@@ -187,4 +189,9 @@
  >        message ({:some => "data"}.to_json)
  >        headers({"AUTHORIZATION" => "Basic #{Base64.encode64("username:password")}","Content-Type" => "application/data"})
  >      end
- * 
+
+ * **ifconfig**, manage interfaces
+ >       ifconfig "192.186.0.1" do
+ >        device "eth0"
+ >       end
+ 
