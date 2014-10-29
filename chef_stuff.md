@@ -165,6 +165,7 @@
  >      end 
  
  * **freebsd_package**, manage packages for the FreeBSD platform. In many cases, it is better to use the package resource instead of this one. This is because when the package resource is used in a recipe, the chef-client will use details that are collected by Ohai at the start of the chef-client run to determine the correct package application
+
  * **gem_package**, manage gem packages that are only included in recipes. install gems on the system wide. In many cases, it is better to use the package resource instead of this one
  * **git**, manage source control resources that exist in a git repository. 
  >      git "/home/user/deployment" do
@@ -175,14 +176,14 @@
  >         group "test"
  >      end 
 
- * **group**, manage a local group. 
+ * **group**, manage a local group 
  >      group "www-data" do
  >        action :modify
  >        members "maintenance"
  >        append true
  >      end 
 
- * **http_request**, send an HTTP request (GET, PUT, POST, DELETE, HEAD, or OPTIONS) with an arbitrary message. This resource is often useful when custom callbacks are necessary.
+ * **http_request**, send an HTTP request (GET, PUT, POST, DELETE, HEAD, or OPTIONS) with an arbitrary message. This resource is often useful when custom callbacks are necessary
  >      http_request "posting data" do
  >        action :post
  >        url "http://example.com/check_in"

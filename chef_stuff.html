@@ -214,7 +214,7 @@ end
 </code></pre>
 </blockquote></li>
 <li><p><strong>freebsd_package</strong>, manage packages for the FreeBSD platform. In many cases, it is better to use the package resource instead of this one. This is because when the package resource is used in a recipe, the chef-client will use details that are collected by Ohai at the start of the chef-client run to determine the correct package application</p></li>
-<li><strong>gem_package</strong>, manage gem packages that are only included in recipes. install gems on the system wide. In many cases, it is better to use the package resource instead of this one</li>
+<li><p><strong>gem_package</strong>, manage gem packages that are only included in recipes. install gems on the system wide. In many cases, it is better to use the package resource instead of this one</p></li>
 <li><p><strong>git</strong>, manage source control resources that exist in a git repository. </p>
 
 <blockquote>
@@ -227,7 +227,7 @@ end
  end
 </code></pre>
 </blockquote></li>
-<li><p><strong>group</strong>, manage a local group. </p>
+<li><p><strong>group</strong>, manage a local group </p>
 
 <blockquote>
 <pre><code> group "www-data" do
@@ -237,7 +237,7 @@ end
  end
 </code></pre>
 </blockquote></li>
-<li><p><strong>http_request</strong>, send an HTTP request (GET, PUT, POST, DELETE, HEAD, or OPTIONS) with an arbitrary message. This resource is often useful when custom callbacks are necessary.</p>
+<li><p><strong>http_request</strong>, send an HTTP request (GET, PUT, POST, DELETE, HEAD, or OPTIONS) with an arbitrary message. This resource is often useful when custom callbacks are necessary</p>
 
 <blockquote>
 <pre><code> http_request "posting data" do
