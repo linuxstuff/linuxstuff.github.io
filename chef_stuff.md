@@ -192,7 +192,29 @@
  >      end
 
  * **ifconfig**, manage interfaces
- >       ifconfig "192.186.0.1" do
+ >      ifconfig "192.186.0.1" do
  >        device "eth0"
- >       end
+ >      end
  
+ * **ips_package**, manage packages (using Image Packaging System (IPS)) on the Solaris 11 platform. In many cases, it is better to use the package resource instead of this one. This is because when the package resource is used in a recipe, the chef-client will use details that are collected by Ohai at the start of the chef-client run to determine the correct package application.
+
+ * **link**, create symbolic or hard links
+ >      case node['platform_family']
+ >      when 'debian'
+ >        ...
+ >      when 'suse'
+ >        ...
+ >      when 'rhel', 'fedora'
+ >        ...
+ >        link '/usr/lib64/httpd/modules/mod_apreq.so' do
+ >          to      '/usr/lib64/httpd/modules/mod_apreq2.so'
+ >          only_if 'test -f /usr/lib64/httpd/modules/mod_apreq2.so'
+ >        end
+ >
+ >        link '/usr/lib/httpd/modules/mod_apreq.so' do
+ >          to    '/usr/lib/httpd/modules/mod_apreq2.so'
+ >          only_if 'test -f /usr/lib/httpd/modules/mod_apreq2.so'
+ >        end
+ >      end
+ 
+ * ****
