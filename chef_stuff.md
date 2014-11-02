@@ -217,4 +217,82 @@
  >        end
  >      end
  
- * ****
+ * **log**, create log entries from a recipe
+ >      log "message" do
+ >        message "This is the message that will be added to the log."
+ >        level :info
+ >      end
+
+ * **macports_package**, manage packages for the Mac OS X platform. In many cases, it is better to use the package resource instead of this one. This is because when the package resource is used in a recipe, the chef-client will use details that are collected by Ohai at the start of the chef-client run to determine the correct package application
+
+ * **mdadm**, manage RAID devices in a Linux environment using the mdadm utility 
+ >      mdadm "/dev/sd0" do
+ >        devices [ "/dev/s1", "/dev/s2", "/dev/s3", "/dev/s4" ]
+ >        level 5
+ >        metadata "0.90"
+ >        chunk 32
+ >        action :create
+ >      end
+
+ * **mount**, manage a mounted file system
+ >      mount "/mount/tmp" do
+ >        pass     0
+ >        fstype   "tmpfs"
+ >        device   "/dev/null"
+ >        options  "nr_inodes=999k,mode=755,size=500m"
+ >        action   [:mount, :enable]
+ >      end
+
+ * **ohai**, reload the Ohai configuration on a node. This allows recipes that change system attributes (like a recipe that adds a user) to refer to those attributes later on during the chef-client run
+ >      ohai "reload" do
+ >        action :reload
+ >      end
+
+ * **package**, manage packages. The package resource will use the correct package manager based on the platform-specific details collected by Ohai at the start of the chef-client run, which means that the platform-specific resources are often unnecessary.
+ >      case node[:platform]
+ >      when "ubuntu","debian"
+ >        package "app_name-doc" do
+ >          action :install
+ >        end
+ >        package "sun-java6-jdk" do	
+ >         response_file "java.seed"
+ >        end 
+ >      when "centos"
+ >         package "app_name-html" do
+ >         provider Chef::Provider::Package::Rpm
+ >         action :install
+ >        end
+ >      end
+
+ * **pacman_package**, manage packages (using pacman) on the Arch Linux platform.
+ >      pacman_package "name of package" do
+ >        action :install
+ >      end
+
+ * **perl**, execute scripts using the Perl interpreter.
+ * **python**, execute scripts using the Python interpreter.
+ 
+
+ * **portage_package**, manage packages for the Gentoo platform.
+
+ * **powershell_script**,  execute a script using the Windows PowerShell interpreter, much like how the script and script-based resources—bash, csh, perl, python, and ruby—are used. 
+ >      powershell_script "write-to-interpolated-path" do
+ >        cwd Chef::Config[:file_cache_path]
+ >        code <<-EOH
+ >        $stream = [System.IO.StreamWriter] "#{Chef::Config[:file_cache_path]}/powershell-test.txt"
+ >        $stream.WriteLine("In #{Chef::Config[:file_cache_path]}...word.")
+ >        $stream.close()
+ >        EOH
+ >      end
+
+ * **registry_key**, create and delete registry keys in Microsoft Windows.
+ >      registry_key "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System" do
+ >        values [{
+ >          :name => "EnableLUA",
+ >          :type => :dword,
+ >          :data => 0
+ >        }]
+ >        action :create
+ >      end
+
+
