@@ -270,10 +270,96 @@
  >      end
 
  * **perl**, execute scripts using the Perl interpreter.
- * **python**, execute scripts using the Python interpreter.
- 
 
+ * **python**, execute scripts using the Python interpreter.
+
+ * **ruby**, execute scripts using the Ruby interpreter.
+ 
  * **portage_package**, manage packages for the Gentoo platform.
+
+ * **rpm_package**, manage packages for the RPM Package Manager platform.
+
+ * **smartos_package**, manage packages for the SmartOS platform.
+
+ * **solaris_package**, manage packages for the Solaris platform.
+
+ * **remote_directory**,  incrementally transfer a directory from a cookbook to a node. The directory that is copied from the cookbook should be located under COOKBOOK_NAME/files/default/REMOTE_DIRECTORY. The remote_directory resource will obey file specificity
+ >      remote_directory "/tmp/remote_something" do
+ >        source "something"
+ >        files_backup 10
+ >        files_owner 'root'
+ >        files_group 'root'
+ >        files_mode '0644'
+ >        owner 'nobody'
+ >        group 'nobody'
+ >        mode '0755'
+ >      end
+
+ * **remote_file**,  transfer a file from a remote location using file specificity. This resource is similar to the file resource.
+ >      remote_file "/tmp/testfile" do
+ >        source "http://www.example.com/tempfiles/testfile"
+ >        mode '0644'
+ >        checksum "3a7dac00b1" # A SHA256 (or portion thereof) of the file.
+ >      end
+ >       
+ >      remote_file "/tmp/couch.png" do
+ >        source "file://sketch.png"
+ >        action :create
+ >      end
+
+ * **route**, manage the system routing table in a Linux environment.
+ >      route "10.0.1.10/32" do
+ >        gateway "10.0.0.20"
+ >        device "eth1"
+ >      end 
+
+ * **ruby_block**, execute Ruby code during a chef-client run. Ruby code in the ruby_block resource is evaluated with other resources during convergence, whereas Ruby code outside of a ruby_block resource is evaluated before other resources, as the recipe is compiled.
+ >      ruby_block "set-env-java-home" do
+ >        block do
+ >          ENV["JAVA_HOME"] = java_home
+ >        end
+ >      end
+
+ * **script**, execute scripts using a specified interpreter, such as Bash, csh, Perl, Python, or Ruby.
+ >      script "install_something" do
+ >        interpreter "bash"
+ >        user "root"
+ >        cwd "/tmp"
+ >        code <<-EOH
+ >         wget http://www.example.com/tarball.tar.gz
+ >         tar -zxf tarball.tar.gz
+ >         cd tarball
+ >         ./configure
+ >         make
+ >         make install
+ >        EOH
+ >      end
+
+ * **service**, manage a service. service tells the chef-client to use one of the following providers during the chef-client run: Chef::Provider::Service::Init, Chef::Provider::Service::Init::Debian,...
+ >      service "example_service" do
+ >        supports :status => true, :restart => true, :reload => true
+ >        action [ :enable, :start ]
+ >      end
+
+ * **subversion**, manage source control resources that exist in a Subversion repository.
+ >      subversion "CouchDB Edge" do
+ >        repository "http://svn.apache.org/repos/asf/couchdb/trunk"
+ >        revision "HEAD"
+ >        destination "/opt/mysources/couch"
+ >        action :sync
+ >      end
+
+ * **template**, manage the contents of a file using an Embedded Ruby (ERB) template by transferring files from a sub-directory of COOKBOOK_NAME/templates/default to a specified path located on a host that is running the chef-client.
+ >      template "/etc/sudoers" do
+ >        source "sudoers.erb"
+ >        mode '0440'
+ >        owner 'root'
+ >        group 'root'
+ >        variables({
+ >           :sudoers_groups => node[:authorization][:sudo][:groups],
+ >           :sudoers_users => node[:authorization][:sudo][:users]
+ >        })
+ >      end
 
  * **powershell_script**,  execute a script using the Windows PowerShell interpreter, much like how the script and script-based resources—bash, csh, perl, python, and ruby—are used. 
  >      powershell_script "write-to-interpolated-path" do
@@ -295,4 +381,4 @@
  >        action :create
  >      end
 
-
+ 

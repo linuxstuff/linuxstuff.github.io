@@ -350,7 +350,113 @@ end
 </blockquote></li>
 <li><p><strong>perl</strong>, execute scripts using the Perl interpreter.</p></li>
 <li><p><strong>python</strong>, execute scripts using the Python interpreter.</p></li>
+<li><p><strong>ruby</strong>, execute scripts using the Ruby interpreter.</p></li>
 <li><p><strong>portage_package</strong>, manage packages for the Gentoo platform.</p></li>
+<li><p><strong>rpm_package</strong>, manage packages for the RPM Package Manager platform.</p></li>
+<li><p><strong>smartos_package</strong>, manage packages for the SmartOS platform.</p></li>
+<li><p><strong>solaris_package</strong>, manage packages for the Solaris platform.</p></li>
+<li><p><strong>remote<em>directory</strong>,  incrementally transfer a directory from a cookbook to a node. The directory that is copied from the cookbook should be located under COOKBOOK</em>NAME/files/default/REMOTE<em>DIRECTORY. The remote</em>directory resource will obey file specificity</p>
+
+<blockquote>
+<pre><code> remote_directory "/tmp/remote_something" do
+ source "something"
+ files_backup 10
+ files_owner 'root'
+ files_group 'root'
+ files_mode '0644'
+ owner 'nobody'
+ group 'nobody'
+ mode '0755'
+ end
+</code></pre>
+</blockquote></li>
+<li><p><strong>remote_file</strong>,  transfer a file from a remote location using file specificity. This resource is similar to the file resource.</p>
+
+<blockquote>
+<pre><code> remote_file "/tmp/testfile" do
+ source "http://www.example.com/tempfiles/testfile"
+ mode '0644'
+ checksum "3a7dac00b1" # A SHA256 (or portion thereof) of the file.
+ end
+
+ remote_file "/tmp/couch.png" do
+ source "file://sketch.png"
+ action :create
+ end
+</code></pre>
+</blockquote></li>
+<li><p><strong>route</strong>, manage the system routing table in a Linux environment.</p>
+
+<blockquote>
+<pre><code> route "10.0.1.10/32" do
+ gateway "10.0.0.20"
+ device "eth1"
+ end
+</code></pre>
+</blockquote></li>
+<li><p><strong>ruby<em>block</strong>, execute Ruby code during a chef-client run. Ruby code in the ruby</em>block resource is evaluated with other resources during convergence, whereas Ruby code outside of a ruby_block resource is evaluated before other resources, as the recipe is compiled.</p>
+
+<blockquote>
+<pre><code> ruby_block "set-env-java-home" do
+ block do
+   ENV["JAVA_HOME"] = java_home
+ end
+ end
+</code></pre>
+</blockquote></li>
+<li><p><strong>script</strong>, execute scripts using a specified interpreter, such as Bash, csh, Perl, Python, or Ruby.</p>
+
+<blockquote>
+<pre><code> script "install_something" do
+ interpreter "bash"
+ user "root"
+ cwd "/tmp"
+ code &lt;&lt;-EOH
+  wget http://www.example.com/tarball.tar.gz
+  tar -zxf tarball.tar.gz
+  cd tarball
+  ./configure
+  make
+  make install
+ EOH
+ end
+</code></pre>
+</blockquote></li>
+<li><p><strong>service</strong>, manage a service. service tells the chef-client to use one of the following providers during the chef-client run: Chef::Provider::Service::Init, Chef::Provider::Service::Init::Debian,...</p>
+
+<blockquote>
+<pre><code> service "example_service" do
+ supports :status =&gt; true, :restart =&gt; true, :reload =&gt; true
+ action [ :enable, :start ]
+ end
+</code></pre>
+</blockquote></li>
+<li><p><strong>subversion</strong>, manage source control resources that exist in a Subversion repository.</p>
+
+<blockquote>
+<pre><code> subversion "CouchDB Edge" do
+ repository "http://svn.apache.org/repos/asf/couchdb/trunk"
+ revision "HEAD"
+ destination "/opt/mysources/couch"
+ action :sync
+ end
+</code></pre>
+</blockquote></li>
+<li><p><strong>template</strong>, manage the contents of a file using an Embedded Ruby (ERB) template by transferring files from a sub-directory of COOKBOOK_NAME/templates/default to a specified path located on a host that is running the chef-client.</p>
+
+<blockquote>
+<pre><code> template "/etc/sudoers" do
+ source "sudoers.erb"
+ mode '0440'
+ owner 'root'
+ group 'root'
+ variables({
+    :sudoers_groups =&gt; node[:authorization][:sudo][:groups],
+    :sudoers_users =&gt; node[:authorization][:sudo][:users]
+ })
+ end
+</code></pre>
+</blockquote></li>
 <li><p><strong>powershell_script</strong>,  execute a script using the Windows PowerShell interpreter, much like how the script and script-based resources—bash, csh, perl, python, and ruby—are used. </p>
 
 <blockquote>
