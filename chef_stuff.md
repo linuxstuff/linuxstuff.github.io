@@ -283,6 +283,8 @@
 
  * **solaris_package**, manage packages for the Solaris platform.
 
+ * **yum_package**,  install, upgrade, and remove packages with Yum for the Red Hat and CentOS platforms.
+
  * **remote_directory**,  incrementally transfer a directory from a cookbook to a node. The directory that is copied from the cookbook should be located under COOKBOOK_NAME/files/default/REMOTE_DIRECTORY. The remote_directory resource will obey file specificity
  >      remote_directory "/tmp/remote_something" do
  >        source "something"
@@ -361,6 +363,17 @@
  >        })
  >      end
 
+ * **user**, add users, update existing users, remove users, and to lock/unlock user passwords.
+ >      user "random" do
+ >        supports :manage_home => true
+ >        comment "Random User"
+ >        uid 1234
+ >        gid "users"
+ >        home "/home/random"
+ >        shell "/bin/bash"
+ >        password "$1$JJsvHslV$szsCjVEroftprNn4JHtDi."
+ >      end
+
  * **powershell_script**,  execute a script using the Windows PowerShell interpreter, much like how the script and script-based resources—bash, csh, perl, python, and ruby—are used. 
  >      powershell_script "write-to-interpolated-path" do
  >        cwd Chef::Config[:file_cache_path]
@@ -381,4 +394,8 @@
  >        action :create
  >      end
 
- 
+ * **windows_package**, manage Microsoft Installer Package (MSI) packages for the Microsoft Windows platform.
+ >      windows_package "7zip" do
+ >        action :install
+ >        source 'C:\7z920.msi'
+ >      end

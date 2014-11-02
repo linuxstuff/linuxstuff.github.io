@@ -355,6 +355,7 @@ end
 <li><p><strong>rpm_package</strong>, manage packages for the RPM Package Manager platform.</p></li>
 <li><p><strong>smartos_package</strong>, manage packages for the SmartOS platform.</p></li>
 <li><p><strong>solaris_package</strong>, manage packages for the Solaris platform.</p></li>
+<li><p><strong>yum_package</strong>,  install, upgrade, and remove packages with Yum for the Red Hat and CentOS platforms.</p></li>
 <li><p><strong>remote<em>directory</strong>,  incrementally transfer a directory from a cookbook to a node. The directory that is copied from the cookbook should be located under COOKBOOK</em>NAME/files/default/REMOTE<em>DIRECTORY. The remote</em>directory resource will obey file specificity</p>
 
 <blockquote>
@@ -457,6 +458,20 @@ end
  end
 </code></pre>
 </blockquote></li>
+<li><p><strong>user</strong>, add users, update existing users, remove users, and to lock/unlock user passwords.</p>
+
+<blockquote>
+<pre><code> user "random" do
+ supports :manage_home =&gt; true
+ comment "Random User"
+ uid 1234
+ gid "users"
+ home "/home/random"
+ shell "/bin/bash"
+ password "$1$JJsvHslV$szsCjVEroftprNn4JHtDi."
+ end
+</code></pre>
+</blockquote></li>
 <li><p><strong>powershell_script</strong>,  execute a script using the Windows PowerShell interpreter, much like how the script and script-based resources—bash, csh, perl, python, and ruby—are used. </p>
 
 <blockquote>
@@ -480,6 +495,15 @@ end
    :data =&gt; 0
  }]
  action :create
+ end
+</code></pre>
+</blockquote></li>
+<li><p><strong>windows_package</strong>, manage Microsoft Installer Package (MSI) packages for the Microsoft Windows platform.</p>
+
+<blockquote>
+<pre><code> windows_package "7zip" do
+ action :install
+ source 'C:\7z920.msi'
  end
 </code></pre>
 </blockquote></li>
