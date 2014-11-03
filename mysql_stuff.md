@@ -60,3 +60,9 @@
 
  * mysql -u user -ppass -e "select * from information_schema.INNODB_TRX\G" > /tmp/trx_info.txt
  * grep "trx_rows_modified\|trx_rows_locked\|trx_lock_memory_bytes" trx_info.txt | grep -v ": 0" | sort | uniq -c
+
+ *** 
+
+ **mysqldump command**
+
+ * mysqldump -u root -p --routines --triggers --default-character-set=utf8 db_name | gzip -c > file_name.sql.gz
