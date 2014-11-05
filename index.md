@@ -8,4 +8,6 @@
  ***
  
  * [OpenStack HEAT](/openstack_heat.html)
-
+ * [Heat CLI](/heat_cli.jpg)
+ * [Create HEAT endpoint](/keystone_create_heat_endpoint.jpg)
+ * [Keyston service list](/keystone-service-list.jpg)
