@@ -43,8 +43,8 @@
 
 ## OpenStack keystone commands to enable the HEAT Orchestration Service
 
- * **keystone service-create --name=heat --type=orchestration --description="Heat Orchestration API"
- * **keystone endpoint-create --service-id=the_service_id_above --publicurl=http://controller:8004/v1/%\(tenant_id\)s --internalurl=http://controller:8004/v1/%\(tenant_id\)s --adminurl=http://controller:8004/v1/%\(tenant_id\)s **
- * **keystone service-create --name=heat-cfn --type=cloudformation --description="Heat CloudFormation API" **
- * **keystone endpoint-create --service-id=the_service_id_above --publicurl=http://controller:8000/v1 --internalurl=http://controller:8000/v1 --adminurl=http://controller:8000/v1*
+ * **keystone service-create --name=heat --type=orchestration --description="Heat Orchestration API"**
+ * **keystone endpoint-create --service-id=the_service_id_above --publicurl=http://controller:8004/v1/%\(tenant_id\)s --internalurl=http://controller:8004/v1/%\(tenant_id\)s --adminurl=http://controller:8004/v1/%\(tenant_id\)s**
+ * **keystone service-create --name=heat-cfn --type=cloudformation --description="Heat CloudFormation API"**
+ * **keystone endpoint-create --service-id=the_service_id_above --publicurl=http://controller:8000/v1 --internalurl=http://controller:8000/v1 --adminurl=http://controller:8000/v1**
 
