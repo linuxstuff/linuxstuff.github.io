@@ -16,7 +16,7 @@
  * provides OpenStack-native REST API and CloudFormation-compatible Query API
  * python applications: heat - CLI, heat-api - OpenStack-native REST API , heat-api-cfn - AWS-style Query API, heat-engine
 
- * heat text file example: https://github.com/openstack/heat-templates/commit/934233a0a69f7144e8d894ef36ef4569996778ad
+ * heat text file example: [Heat Text File Example](https://github.com/openstack/heat-templates/commit/934233a0a69f7144e8d894ef36ef4569996778ad)
 
  * OpenStack Architecture (**architecture image**): [Architecture Image](http://docs.openstack.org/havana/install-guide/install/apt/content/ch_overview.html#conceptual-architecture)
  
