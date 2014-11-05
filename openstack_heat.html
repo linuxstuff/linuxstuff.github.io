@@ -16,7 +16,40 @@
 <li><p>python applications: heat - CLI, heat-api - OpenStack-native REST API , heat-api-cfn - AWS-style Query API, heat-engine</p></li>
 <li><p>heat text file example: https://github.com/openstack/heat-templates/commit/934233a0a69f7144e8d894ef36ef4569996778ad</p></li>
 <li><p>OpenStack Architecture : http://docs.openstack.org/havana/install-guide/install/apt/content/ch_overview.html#conceptual-architecture</p></li>
-<li>the Orchestration service is integrated within the OpenStack software tools. Removing the heat component from the OpenStack software collection may prove ... </li>
+<li>the Orchestration service is integrated within the OpenStack software tools and works with the OpenStack API</li>
 </ul>
 
 <hr />
+
+<h2>Configuration Examples:</h2>
+
+<ul>
+<li>/etc/heat/heat.conf
+<blockquote>
+<pre><code> verbose = True
+ log&lt;em&gt;dir=/var/log/heat
+ rabbit&lt;/em&gt;host = controller
+ rabbit&lt;em&gt;password = RABBIT&lt;/em&gt;PASS
+ auth&lt;em&gt;host = controller
+ auth&lt;/em&gt;port = 35357
+</code></pre>
+
+<p>auth<em>protocol = http
+ auth</em>uri = http://controller:5000/v2.0
+ admin<em>tenant</em>name = service
+ admin<em>user = heat
+ admin</em>password = HEAT<em>PASS
+ [ec2</em>authtoken]
+ auth<em>uri = http://controller:5000/v2.0
+ keystone</em>ec2_uri = http://controller:5000/v2.0/ec2tokens</li>
+</ul></p>
+
+<h2>OpenStack keystone commands to enable the HEAT Orchestration Service</h2>
+</blockquote>
+
+<ul>
+<li>**keystone service-create --name=heat --type=orchestration --description="Heat Orchestration API"</li>
+<li><em>*keystone endpoint-create --service-id=the_service_id_above --publicurl=http://controller:8004/v1/%(tenant_id)s --internalurl=http://controller:8004/v1/%(tenant_id)s --adminurl=http://controller:8004/v1/%(tenant_id)s *</em></li>
+<li><em>*keystone service-create --name=heat-cfn --type=cloudformation --description="Heat CloudFormation API" *</em></li>
+<li><em>*keystone endpoint-create --service-id=the_service_id_above --publicurl=http://controller:8000/v1 --internalurl=http://controller:8000/v1 --adminurl=http://controller:8000/v1</em></li>
+</ul>

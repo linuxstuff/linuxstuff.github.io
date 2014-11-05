@@ -19,6 +19,32 @@
  * heat text file example: https://github.com/openstack/heat-templates/commit/934233a0a69f7144e8d894ef36ef4569996778ad
 
  * OpenStack Architecture : http://docs.openstack.org/havana/install-guide/install/apt/content/ch_overview.html#conceptual-architecture
- * the Orchestration service is integrated within the OpenStack software tools. Removing the heat component from the OpenStack software collection may prove ... 
+ * the Orchestration service is integrated within the OpenStack software tools and works with the OpenStack API
 
 ***
+
+##Configuration Examples:
+
+ * /etc/heat/heat.conf
+ >      verbose = True
+ >      log_dir=/var/log/heat
+ >      rabbit_host = controller
+ >      rabbit_password = RABBIT_PASS
+ >      auth_host = controller
+ >      auth_port = 35357
+ >	auth_protocol = http
+ >	auth_uri = http://controller:5000/v2.0
+ >	admin_tenant_name = service
+ > 	admin_user = heat
+ >	admin_password = HEAT_PASS
+ >	[ec2_authtoken]
+ >	auth_uri = http://controller:5000/v2.0
+ >	keystone_ec2_uri = http://controller:5000/v2.0/ec2tokens
+
+## OpenStack keystone commands to enable the HEAT Orchestration Service
+
+ * **keystone service-create --name=heat --type=orchestration --description="Heat Orchestration API"
+ * **keystone endpoint-create --service-id=the_service_id_above --publicurl=http://controller:8004/v1/%\(tenant_id\)s --internalurl=http://controller:8004/v1/%\(tenant_id\)s --adminurl=http://controller:8004/v1/%\(tenant_id\)s **
+ * **keystone service-create --name=heat-cfn --type=cloudformation --description="Heat CloudFormation API" **
+ * **keystone endpoint-create --service-id=the_service_id_above --publicurl=http://controller:8000/v1 --internalurl=http://controller:8000/v1 --adminurl=http://controller:8000/v1*
+
