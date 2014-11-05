@@ -5,7 +5,7 @@
  * OpenStack provides an Infrastructure as a Service (IaaS) solution through a set of **interrelated services** . Supports KVM, XenServer and LXC as hypervisor technology.
 
 
- * orchestration engine, to launch composite could applications
+ * HEAT is an orchestration engine, to launch composite could applications
  * it uses text files, that can be treated like code
  * a heat template will describe the infrastructure for a cloud application
  * the heat text file will be created by the cloud user (a human)
