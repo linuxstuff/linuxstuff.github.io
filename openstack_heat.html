@@ -3,7 +3,7 @@
 <h2>What is it and how it works</h2>
 
 <ul>
-<li><p>OpenStack provides an Infrastructure as a Service (IaaS) solution through a set of <strong>interrelated services</strong></p></li>
+<li><p>OpenStack provides an Infrastructure as a Service (IaaS) solution through a set of <strong>interrelated services</strong> . Supports KVM, XenServer and LXC as hypervisor technology.</p></li>
 <li><p>orchestration engine, to launch composite could applications</p></li>
 <li>it uses text files, that can be treated like code</li>
 <li>a heat template will describe the infrastructure for a cloud application</li>
@@ -48,8 +48,18 @@
 </blockquote>
 
 <ul>
+<li><strong>keystone user-create --name=heat --pass=HEAT_PASS --email=heat@example.com</strong></li>
+<li><strong>keystone user-role-add --user=heat --tenant=service --role=admin</strong></li>
 <li><strong>keystone service-create --name=heat --type=orchestration --description="Heat Orchestration API"</strong></li>
 <li><strong>keystone endpoint-create --service-id=the<em>service</em>id<em>above --publicurl=http://controller:8004/v1/%(tenant</em>id)s --internalurl=http://controller:8004/v1/%(tenant<em>id)s --adminurl=http://controller:8004/v1/%(tenant</em>id)s</strong></li>
 <li><strong>keystone service-create --name=heat-cfn --type=cloudformation --description="Heat CloudFormation API"</strong></li>
 <li><strong>keystone endpoint-create --service-id=the<em>service</em>id_above --publicurl=http://controller:8000/v1 --internalurl=http://controller:8000/v1 --adminurl=http://controller:8000/v1</strong></li>
+</ul>
+
+<h2>Heat commands</h2>
+
+<ul>
+<li><strong>heat stack-create mystack --template-file=/PATH<em>TO</em>HEAT<em>TEMPLATES/WordPress</em>Single_Instance.template</strong></li>
+<li><strong>heat stack-list</strong></li>
+<li><strong>heat stack-show mystack</strong></li>
 </ul>

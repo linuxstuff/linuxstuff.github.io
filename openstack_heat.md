@@ -2,7 +2,7 @@
 
 ## What is it and how it works
 
- * OpenStack provides an Infrastructure as a Service (IaaS) solution through a set of **interrelated services**
+ * OpenStack provides an Infrastructure as a Service (IaaS) solution through a set of **interrelated services** . Supports KVM, XenServer and LXC as hypervisor technology.
 
 
  * orchestration engine, to launch composite could applications
@@ -44,8 +44,19 @@
 
 ## OpenStack keystone commands to enable the HEAT Orchestration Service
 
+
+ * **keystone user-create --name=heat --pass=HEAT_PASS --email=heat@example.com**
+ * **keystone user-role-add --user=heat --tenant=service --role=admin**
  * **keystone service-create --name=heat --type=orchestration --description="Heat Orchestration API"**
  * **keystone endpoint-create --service-id=the_service_id_above --publicurl=http://controller:8004/v1/%\(tenant_id\)s --internalurl=http://controller:8004/v1/%\(tenant_id\)s --adminurl=http://controller:8004/v1/%\(tenant_id\)s**
  * **keystone service-create --name=heat-cfn --type=cloudformation --description="Heat CloudFormation API"**
  * **keystone endpoint-create --service-id=the_service_id_above --publicurl=http://controller:8000/v1 --internalurl=http://controller:8000/v1 --adminurl=http://controller:8000/v1**
+
+
+## Heat commands
+
+ * **heat stack-create mystack --template-file=/PATH_TO_HEAT_TEMPLATES/WordPress_Single_Instance.template**
+ * **heat stack-list**
+ * **heat stack-show mystack**
+
 
