@@ -19,8 +19,6 @@
  * heat text file example: https://github.com/openstack/heat-templates/commit/934233a0a69f7144e8d894ef36ef4569996778ad
 
  * OpenStack Architecture : http://docs.openstack.org/havana/install-guide/install/apt/content/ch_overview.html#conceptual-architecture
-
-
- * the Orchestration service is integrated in the OpenStack 
+ * the Orchestration service is integrated within the OpenStack software tools. Removing the heat component from the OpenStack software collection may prove ... 
 
 ***
