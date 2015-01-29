@@ -66,3 +66,7 @@
  **mysqldump command**
 
  * mysqldump -u root -p --routines --triggers --default-character-set=utf8 db_name | gzip -c > file_name.sql.gz
+
+ **kill query thread_id**
+
+ * issue: *kill query thread_id* , this will kill the query from the given thread without killing the connection. The new versions of maria also support: *kill query id query_id*
