@@ -3,7 +3,9 @@
  * [Chef Resources](/chef_stuff.html)
  * [Chef Knife](/chef_knife.html)
  * [Chef Utils](/chef_utils.html)
+ * [Chef 12 Install](chef12_install.html)
  * [Mysql Stuff](mysql_stuff.html)
+ * [Util Commands](util_commands.html)
  
  ***
  
