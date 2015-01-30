@@ -1,0 +1,8 @@
+<p>On debian:
+-- systemv is in use 
+-- migrating to upstart is wanted 
+-- when issue chef-server-crl reconfigure, this is the command it runs: 
+   chef-solo -c /opt/opscode/embedded/cookbooks/solo.rb -j /opt/opscode/embedded/cookbooks/dna.json
+   recipe[private-chef::default] -- has this include: include<em>recipe "enterprise::runit"
+   the  "enterprise::runit" recipe is using rinit</em>upstart for debian
+   just CHANGE THIS :include<em>recipe 'enterprise::runit</em>upstart' to THIS: include<em>recipe 'enterprise::runit</em>sysvinit' IN: /opt/opscode/embedded/cookbooks/enterprise/recipes/runit.rb</p>

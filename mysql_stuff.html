@@ -76,5 +76,8 @@ flush privileges;
 <p><strong>mysqldump command</strong></p>
 
 <ul>
-<li>mysqldump -u root -p --routines --triggers --default-character-set=utf8 db<em>name | gzip -c > file</em>name.sql.gz</li>
+<li><p>mysqldump -u root -p --routines --triggers --default-character-set=utf8 db<em>name | gzip -c > file</em>name.sql.gz</p>
+
+<p><strong>kill query thread_id</strong></p></li>
+<li><p>issue: <em>kill query thread_id</em> , this will kill the query from the given thread without killing the connection. The new versions of maria also support: <em>kill query id query_id</em></p></li>
 </ul>
