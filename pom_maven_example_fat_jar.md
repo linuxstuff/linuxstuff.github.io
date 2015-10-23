@@ -25,8 +25,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
-    </properties>
-    
+    </properties>    
     <build>
         <finalName>closewait</finalName>
         <plugins>
@@ -39,7 +38,6 @@
                     <downloadJavadocs>false</downloadJavadocs>
 		</configuration>
             </plugin>
-            
             <plugin>
 		<groupId>org.apache.maven.plugins</groupId>
 		<artifactId>maven-compiler-plugin</artifactId>
@@ -49,7 +47,6 @@
                     <target>${jdk.version}</target>
 		</configuration>
             </plugin>
-            
             <plugin>
 		<groupId>org.apache.maven.plugins</groupId>
 		<artifactId>maven-assembly-plugin</artifactId>
@@ -65,7 +62,6 @@
                             <mainClass>com.mkyong.core.utils.App</mainClass>
                         </manifest>
                     </archive>
-
 		</configuration>
 		<executions>
                     <execution>
@@ -80,7 +76,6 @@
             </plugin>
         </plugins>
     </build>
-    
 </project>
 
 ***
