@@ -13,3 +13,7 @@
  * [Heat CLI](/heat_cli.jpg)
  * [Create HEAT endpoint](/keystone_create_heat_endpoint.jpg)
  * [Keyston service list](/keystone_service_list.jpg)
+
+ ***
+
+ * [POM File Fat jar](/pom_maven_example_fat_jar.html)
