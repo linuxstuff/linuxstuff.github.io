@@ -1,0 +1,86 @@
+# Pom file example. Java project with maven. 
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.mytests</groupId>
+    <artifactId>test</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxrs</artifactId>
+            <version>2.7.7</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+            <version>2.0-m10</version>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+    </properties>
+    
+    <build>
+        <finalName>closewait</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-eclipse-plugin</artifactId>
+		<version>2.9</version>
+		<configuration>
+                    <downloadSources>true</downloadSources>
+                    <downloadJavadocs>false</downloadJavadocs>
+		</configuration>
+            </plugin>
+            
+            <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-compiler-plugin</artifactId>
+		<version>2.3.2</version>
+		<configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+		</configuration>
+            </plugin>
+            
+            <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-assembly-plugin</artifactId>
+		<version>2.4.1</version>
+		<configuration>
+                    <!-- get all project dependencies -->
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <!-- MainClass in mainfest make a executable jar -->
+                    <archive>
+                        <manifest>
+                            <mainClass>com.mkyong.core.utils.App</mainClass>
+                        </manifest>
+                    </archive>
+
+		</configuration>
+		<executions>
+                    <execution>
+			<id>make-assembly</id>
+                        <!-- bind to the packaging phase -->
+                        <phase>package</phase> 
+			<goals>
+                            <goal>single</goal>
+			</goals>
+                    </execution>
+		</executions>
+            </plugin>
+        </plugins>
+    </build>
+    
+</project>
+
+***
