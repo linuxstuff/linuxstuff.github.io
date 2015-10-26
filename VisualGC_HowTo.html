@@ -1,0 +1,17 @@
+<h1>Start VisualGC</h1>
+
+<p><strong>We need jstatd to run on the jvm machine</strong></p>
+
+<ul>
+<li>create a policy file somewhere: vim jstatd.all.policy</li>
+<li>identify the java process: jps</li>
+<li>start the jstatd daemon: jstatd -p 31498 -J-Djava.security.policy=/home/cristi/jstatd.all.policy</li>
+<li>jstatd.all.policy content, below:
+<blockquote>
+  <p>grant codebase \"file:${java.home}/../lib/tools.jar\" {
+permission java.security.AllPermission;
+};</li>
+</ul>
+
+<p><hr /></p>
+</blockquote></p>

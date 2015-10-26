@@ -17,3 +17,4 @@
  ***
 
  * [POM File Fat jar](/pom_maven_example_fat_jar.html)
+ * [VisualGC and jstatd](/VisualGC_HowTo.html)
